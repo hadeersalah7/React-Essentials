@@ -1,5 +1,8 @@
 import React from 'react'
-import reactImg from "../assets/react-core-concepts.png"
+import reactImg from "../../assets/react-core-concepts.png"
+import "./header.scss"
+
+
 const reactDescription = ["Fundmental", "Crucial", "Core"]
 
 const generatedNumber = (n) => {

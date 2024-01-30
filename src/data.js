@@ -1,7 +1,7 @@
 import componentsImg from "./assets/components.png";
 import jsxImg from "./assets/jsx-ui.png";
 import stateImg from "./assets/state-mgmt.png";
-
+import configImg from "./assets/config.png";
 export const DataObject = [
     {
         image: componentsImg,
@@ -21,4 +21,10 @@ export const DataObject = [
         title: "State Mangement",
         description:"State Mangement In React components" 
     },
+    {
+        image: configImg, 
+        alt: "React Hooks",
+        title: "React Hooks",
+        description: "Hooks are spicial characters to deal with variables"
+    }
 ];

@@ -1,10 +1,14 @@
+import { useState } from "react";
 import CoreConcepts from "./components/CoreConcepts/CoreConcepts";
 import Header from "./components/Header/Header";
-import jsxImg from "./assets/jsx-ui.png"
-import stateImg from "./assets/state-mgmt.png"
 import { DataObject } from "./data";
+import { renderedData } from "./data"
 import TapButton from "./components/TabButton/TapButton";
 const App = () => {
+  const [selectedContent, setSelectedContent] = useState("components")
+  const handleSelecOption = (selectedOption) => {
+setSelectedContent(selectedOption)
+  }
   return (
     <div>
       <Header />
@@ -23,19 +27,28 @@ const App = () => {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TapButton>
+            <TapButton onSelect={() => handleSelecOption("components")}>
               Components
             </TapButton>
-            <TapButton>
+            <TapButton onSelect={() => handleSelecOption("jsx")}>
               JSX
             </TapButton>
-            <TapButton>
+            <TapButton onSelect={() => handleSelecOption("state")}>
               State
             </TapButton>
-            <TapButton>
-              Hooks
+            <TapButton onSelect={() => handleSelecOption("props")}>
+              Props
             </TapButton>
           </menu>
+          <div id="tab-content">
+            <h3>{renderedData[selectedContent].title}</h3>
+            <p>{renderedData[selectedContent].description}</p>
+            <pre>
+              <code>
+                {renderedData[selectedContent].code}
+              </code>
+            </pre>
+          </div>
         </section>
       </main>
     </div>

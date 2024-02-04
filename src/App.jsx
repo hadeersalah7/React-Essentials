@@ -29,10 +29,9 @@ setSelectedContent(selectedOption)
         <section id="core-concepts">
           <h2>Core Concepts</h2>
           <ul style={{ display: "flex", justifyContent: "space-evenly" }}>
-            <CoreConcepts {...DataObject[0]} />
-            <CoreConcepts {...DataObject[1]} />
-            <CoreConcepts {...DataObject[2]} />
-            <CoreConcepts {...DataObject[3]} />
+            {DataObject.map((data) => (
+              <CoreConcepts {...data} />
+            ))}
           </ul>
         </section>
 

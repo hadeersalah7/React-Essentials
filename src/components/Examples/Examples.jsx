@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import { renderedData } from '../../data'
 import TapButton from '../TabButton/TapButton'
+import ExamplesSection from '../ExamplesSection/ExamplesSection'
+import Tabs from '../Tabs/Tabs'
 const Examples = () => {
     const [selectedContent, setSelectedContent] = useState()
     const handleSelecOption = (selectedOption) => {
@@ -19,24 +21,28 @@ const Examples = () => {
         </div>
     }
     return (
-        <section id="examples">
+        <ExamplesSection id="examples">
             <h2>Examples</h2>
-            <menu>
-                <TapButton isSelected={selectedContent === "components"} onSelect={() => handleSelecOption("components")}>
-                    Components
-                </TapButton>
-                <TapButton isSelected={selectedContent === "jsx"} onSelect={() => handleSelecOption("jsx")}>
-                    JSX
-                </TapButton>
-                <TapButton isSelected={selectedContent === "state"} onSelect={() => handleSelecOption("state")}>
-                    State
-                </TapButton>
-                <TapButton isSelected={selectedContent === "props"} onSelect={() => handleSelecOption("props")}>
-                    Props
-                </TapButton>
-            </menu>
-            {tapContent}
-        </section>
+            <Tabs buttons={
+                <>
+                    <TapButton isSelected={selectedContent === "components"} onClick={() => handleSelecOption("components")}>
+                        Components
+                    </TapButton>
+                    <TapButton isSelected={selectedContent === "jsx"} onClick={() => handleSelecOption("jsx")}>
+                        JSX
+                    </TapButton>
+                    <TapButton isSelected={selectedContent === "state"} onClick={() => handleSelecOption("state")}>
+                        State
+                    </TapButton>
+                    <TapButton isSelected={selectedContent === "props"} onClick={() => handleSelecOption("props")}>
+                        Props
+                    </TapButton>
+                </>
+            }>
+                
+                {tapContent}
+            </Tabs>
+        </ExamplesSection>
     )
 }
 

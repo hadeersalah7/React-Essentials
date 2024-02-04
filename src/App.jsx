@@ -5,9 +5,21 @@ import { DataObject } from "./data";
 import { renderedData } from "./data"
 import TapButton from "./components/TabButton/TapButton";
 const App = () => {
-  const [selectedContent, setSelectedContent] = useState("components")
+  const [selectedContent, setSelectedContent] = useState()
   const handleSelecOption = (selectedOption) => {
 setSelectedContent(selectedOption)
+  }
+  let tapContent = <p style={{display: "flex", justifyContent: "start", alignItems: "start", paddingLeft: "15px"}}>Please Select A Content...</p>
+  if (selectedContent) {
+    tapContent = <div id="tab-content">
+      <h3>{renderedData[selectedContent].title}</h3>
+      <p>{renderedData[selectedContent].description}</p>
+      <pre>
+        <code>
+          {renderedData[selectedContent].code}
+        </code>
+      </pre>
+    </div>
   }
   return (
     <div>
@@ -27,28 +39,20 @@ setSelectedContent(selectedOption)
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TapButton onSelect={() => handleSelecOption("components")}>
+            <TapButton isSelected={selectedContent === "components"} onSelect={() => handleSelecOption("components")}>
               Components
             </TapButton>
-            <TapButton onSelect={() => handleSelecOption("jsx")}>
+            <TapButton isSelected={selectedContent === "jsx"} onSelect={() => handleSelecOption("jsx")}>
               JSX
             </TapButton>
-            <TapButton onSelect={() => handleSelecOption("state")}>
+            <TapButton isSelected={selectedContent === "state"} onSelect={() => handleSelecOption("state")}>
               State
             </TapButton>
-            <TapButton onSelect={() => handleSelecOption("props")}>
+            <TapButton isSelected={selectedContent === "props"} onSelect={() => handleSelecOption("props")}>
               Props
             </TapButton>
           </menu>
-          <div id="tab-content">
-            <h3>{renderedData[selectedContent].title}</h3>
-            <p>{renderedData[selectedContent].description}</p>
-            <pre>
-              <code>
-                {renderedData[selectedContent].code}
-              </code>
-            </pre>
-          </div>
+          {tapContent}
         </section>
       </main>
     </div>

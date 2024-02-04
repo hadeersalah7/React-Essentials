@@ -1,10 +1,10 @@
 import React from 'react'
 import "./tap-button.scss"
-const TapButton = ({children, onSelect}) => {
+const TapButton = ({children, onSelect, isSelected}) => {
     return (
         <>
             <li>
-                <button onClick={onSelect}>
+                <button className={isSelected ? "active" : undefined} onClick={onSelect}>
                     {children}
                 </button>
         </li>
